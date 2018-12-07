@@ -134,6 +134,7 @@ convertToSmaller = (input, conversionFactor) => input * conversionFactor
 daysToTotalHours = (days) => convertToSmaller(days, 24);
 daysToTotalMinutes = (days) => convertToSmaller(days, 1440);
 daysToTotalSeconds = (days) => convertToSmaller(days, 86400);
+remainingAfterConvert = (input, conversionFactor) => Math.trunc(input%conversionFactor);
  * @todo THEN USING THESE FUNCTIONS, REPLACE THE 0 IN EACH FUNCTION DEFINITION BELOW WITH THE APPROPRIATE OUTPUT
  * @todo BE SURE TO DOCUMENT EACH FUNCTION IN JSDOC FORMAT (USE BELOW AS REFERENCE AND SEE: http://usejsdoc.org/)
  */
