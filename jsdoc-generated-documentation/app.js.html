@@ -126,6 +126,11 @@ let mouseButtonPressed = (event, index) => {
 
 /** 
  * @todo FOR ASSIGNMENT 2, ADD YOUR OWN FUNCTION DEFINITIONS AS DIRECTED IN THE ASSIGNMENT
+convertToLarger = (input, conversionFactor) => Math.trunc(input/conversionFactor);
+msToTotalSeconds = (milliSeconds) => convertToLarger(milliSeconds, 1000);
+msToTotalMinutes = (milliSeconds) => convertToLarger(milliSeconds, 60000);
+msToTotalHours = (milliSeconds) => convertToLarger(milliSeconds, 3600000);
+remainingAfterConvert = (input, conversionFactor) => input%conversionFactor;
  * @todo THEN USING THESE FUNCTIONS, REPLACE THE 0 IN EACH FUNCTION DEFINITION BELOW WITH THE APPROPRIATE OUTPUT
  * @todo BE SURE TO DOCUMENT EACH FUNCTION IN JSDOC FORMAT (USE BELOW AS REFERENCE AND SEE: http://usejsdoc.org/)
  */
@@ -135,11 +140,24 @@ let mouseButtonPressed = (event, index) => {
  * @param {number} num the number of milliseconds to convert to seconds
  * @return {number} second for the displayed time (0 to 60)
  */
+ 
+let getSecondFromMs   = num => remainingAfterConvert(msToTotalSeconds(num), 60);
 
-let getSecondFromMs   = num => 0;
+/**
+ * Given a number of milliseconds from midnight, returns the minutes (0 to 60) for the displayed time
+ * @param {number} num the number of milliseconds to convert to minutes
+ * @return {number} minutes for the displayed time (0 to 60)
+ */
+ 
+let getMinuteFromMs   = num => remainingAfterConvert(msToTotalMinutes(num), 60);
 
-let getMinuteFromMs   = num => 0;
-let getHourFromMs     = num => 0;
+/**
+ * Given a number of milliseconds from midnight, returns the hours (0 to 24) for the displayed time
+ * @param {number} num the number of milliseconds to convert to hours
+ * @return {number} hours for the displayed time (0 to 24)
+ */
+ 
+let getHourFromMs     = num => remainingAfterConvert(msToTotalHours(num), 24);
 
 let getSecondFromDays = num => 0;
 let getMinuteFromDays = num => 0;
