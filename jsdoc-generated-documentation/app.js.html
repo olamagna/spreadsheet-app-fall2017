@@ -130,7 +130,10 @@ convertToLarger = (input, conversionFactor) => Math.trunc(input/conversionFactor
 msToTotalSeconds = (milliSeconds) => convertToLarger(milliSeconds, 1000);
 msToTotalMinutes = (milliSeconds) => convertToLarger(milliSeconds, 60000);
 msToTotalHours = (milliSeconds) => convertToLarger(milliSeconds, 3600000);
-remainingAfterConvert = (input, conversionFactor) => input%conversionFactor;
+convertToSmaller = (input, conversionFactor) => input * conversionFactor
+daysToTotalHours = (days) => convertToSmaller(days, 24);
+daysToTotalMinutes = (days) => convertToSmaller(days, 1440);
+daysToTotalSeconds = (days) => convertToSmaller(days, 86400);
  * @todo THEN USING THESE FUNCTIONS, REPLACE THE 0 IN EACH FUNCTION DEFINITION BELOW WITH THE APPROPRIATE OUTPUT
  * @todo BE SURE TO DOCUMENT EACH FUNCTION IN JSDOC FORMAT (USE BELOW AS REFERENCE AND SEE: http://usejsdoc.org/)
  */
@@ -159,9 +162,29 @@ let getMinuteFromMs   = num => remainingAfterConvert(msToTotalMinutes(num), 60);
  
 let getHourFromMs     = num => remainingAfterConvert(msToTotalHours(num), 24);
 
-let getSecondFromDays = num => 0;
-let getMinuteFromDays = num => 0;
-let getHourFromDays   = num => 0;
+/**
+ * Given a number of days, returns the number of seconds from midnight(0 to 60) for the displayed time
+ * @param {number} num the number of days to convert to seconds
+ * @return {number} seconds for the displayed time (0 to 60)
+ */
+ 
+ let getSecondFromDays = num => daysToTotalSeconds(remainingAfterConvert(num, 60));
+
+/**
+ * Given a number of days, returns the number of minutes from midnight (0 to 60) for the displayed time
+ * @param {number} num the number of days to convert to minutes
+ * @return {number} minutes for the displayed time (0 to 60)
+ */
+ 
+let getMinuteFromDays = num => daysToTotalMinutes(remainingAfterConvert(num, 60));
+
+/**
+ * Given a number of days from midnight, returns the hours (0 to 24) for the displayed time
+ * @param {number} num the number of days to convert to hours
+ * @return {number} hours for the displayed time (0 to 24)
+ */
+ 
+let getHourFromDays   = num => daysToTotalHours(remainingAfterConvert(num, 24));
 
 /* END REPLACEMENT FOR ASSIGNMENT 2 */
 
